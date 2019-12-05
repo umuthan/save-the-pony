@@ -1,0 +1,214 @@
+$text-color: #434244;
+$screen-color: #bbc7a2;
+$border-color: #885299;
+$console-color: #cb2e2b;
+$button-color: #434244;
+$button-text-color: #ffffff;
+$border-radius: 20px;
+
+body {
+  background: url('img/background.jpg');
+  font-family: monospace;
+  color: $text-color;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.clearFix {
+  clear: both;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+/* Alignments */
+
+.center {
+  text-align:center;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+}
+
+/* Headings */
+
+h1 {
+  padding-bottom: 20px;
+  white-space: pre;
+}
+
+h2 {
+  padding-bottom: 10px;
+}
+
+h3 {
+  font-size: 185px;
+}
+
+p {
+  padding: 2px 0;
+  width: 100%;
+}
+
+img {
+  width: 100%
+}
+
+#console {
+
+  border-radius: $border-radius;
+  background: $console-color;
+  width: auto;
+  padding: 20px;
+
+  #screen {
+    padding: 20px;
+    background: $screen-color;
+    border: 20px solid #434244;
+    border-radius: 10px;
+    overflow: hidden;
+    position:relative;
+    width: 300px;
+    height: 300px;
+
+    >div {
+      mix-blend-mode: luminosity;
+      width: 300px;
+      height: 300px;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    img.pony {
+      width:auto;
+      height: 180px;
+    }
+
+    #maze {
+
+      width: 100%;
+      height: 100%;
+      border-bottom: 2px solid $button-color;
+      border-right: 2px solid $button-color;
+
+      .cell {
+        float: left;
+        box-sizing: border-box;
+      }
+
+      .cell.north {
+        border-top: 2px solid $button-color;
+      }
+
+      .cell.west {
+        border-left: 2px solid $button-color;
+      }
+
+      .cell.east {
+        border-right: 2px solid $button-color;
+      }
+
+      .cell.south {
+        border-bottom: 2px solid $button-color;
+      }
+
+    }
+
+  }
+
+  label {
+    display: flex;
+  }
+
+  #controls {
+
+    padding: 30px 20px;
+
+    button {
+      width: 30px;
+      height: 30px;
+      background: $button-color;
+      border-radius: $border-radius/2;
+      color: $button-text-color;
+      border: none;
+      margin: 2px;
+    }
+
+    #north, #south {
+      margin-left: 36px;
+      display: block;
+    }
+
+    #star {
+      border-radius: 50px;
+      width: 50px;
+      height: 50px;
+      float:right;
+      margin-top:10px;
+    }
+
+    #cross {
+      border-radius: 35px;
+      width: 35px;
+      height: 35px;
+      float:right;
+      margin-top:50px;
+    }
+
+  }
+}
+
+/* Effects */
+
+.animation {
+  opacity: 0;
+}
+
+.animation.blink {
+  animation: fade 1s linear infinite;
+}
+
+.animation.toleft {
+  left: -300px;
+  transition: 1s;
+}
+
+.animation.fadeIn {
+  opacity: 1;
+	animation-name: fade;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.animation.draw {
+  opacity: 1;
+}
+
+.animation.draw path {
+  opacity: 1;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+  animation: dash 1s linear infinite;
+}
+
+@keyframes fade{
+  0%{opacity: 0;}
+  50%{opacity: .5;}
+  100%{opacity: 1;}
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 200;
+  }
+}
