@@ -1,3 +1,11 @@
+/**
+ * Save The Pony - Trustpilot Code Challenge
+ * https://github.com/umuthan/save-the-pony
+ *
+ * Author: Umuthan Uyan
+ *
+ */
+
 import React, { Component } from 'react';
 
 import './assets/App.scss';
@@ -10,6 +18,11 @@ import { createMaze } from './api/Maze';
 
 class App extends Component {
 
+  /*
+  **
+  ** Setting the default values for start screen.
+  **
+  */
   state = {
     mazeID: 0,
     mazeHeight: 0,
@@ -20,6 +33,11 @@ class App extends Component {
     notificationImage: null
   };
 
+  /*
+  **
+  ** Create maze function after selecting values.
+  **
+  */
   createMaze = (data) => {
     createMaze(data).then( data => {
       if(data.maze_id) {
@@ -35,6 +53,11 @@ class App extends Component {
     });
   }
 
+  /*
+  **
+  ** Notification screen update after events.
+  **
+  */
   notificationUpdate = (text,background,state) => {
     this.setState({
       notificationText: text,

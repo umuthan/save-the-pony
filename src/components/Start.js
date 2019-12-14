@@ -1,3 +1,11 @@
+/**
+ * Save The Pony - Trustpilot Code Challenge
+ * https://github.com/umuthan/save-the-pony
+ *
+ * Author: Umuthan Uyan
+ *
+ */
+
 import React, { Component } from 'react';
 
 import Controls from './Controls';
@@ -7,6 +15,11 @@ import { Star, Arrow, Difficulty, MazeLoading } from '../assets/img/Icons';
 
 class Start extends Component {
 
+  /*
+  **
+  ** Setting the default API values
+  **
+  */
   state = {
     stage: 'home',
     animate: true,
@@ -19,6 +32,12 @@ class Start extends Component {
     difficultyValues: [0,1,2,3,4,5,6,7,8,9,10],
     difficulty: 0
   };
+
+  /*
+  **
+  ** Changing stage after selecting values to create maze
+  **
+  */
 
   changeStage = () => {
     var newStage = 'home';
@@ -41,6 +60,11 @@ class Start extends Component {
     });
   }
 
+  /*
+  **
+  ** Creating maze from selected values
+  **
+  */
   createMaze = () => {
     const data = {
       'maze-height'     : this.state.mazeHeight,
@@ -52,6 +76,11 @@ class Start extends Component {
     this.props.createMazeCallback(data);
   }
 
+  /*
+  **
+  ** Minimal hack to see css transition effects
+  **
+  */
   componentDidUpdate(prevProps,prevState) {
     if(prevState.stage !== this.state.stage) {
       setTimeout(() => {
@@ -60,6 +89,11 @@ class Start extends Component {
     }
   }
 
+  /*
+  **
+  ** Change setting when pressing up and down buttons
+  **
+  */
   changeSetting = (status) => {
     var currentStage = this.state.stage;
 
@@ -87,17 +121,6 @@ class Start extends Component {
       player,
       difficulty
     } = this.state;
-
-    const mazeOptions = [];
-    const difficultyOptions = [];
-
-    for (var i=15;i<=25;i++) {
-      mazeOptions.push(<option key={i} value={i}>{i}</option>)
-    }
-
-    for (var j=0;j<=10;j++) {
-      difficultyOptions.push(<option key={j} value={j}>{j}</option>)
-    }
 
     return(
       <div>
@@ -148,7 +171,7 @@ class Start extends Component {
           <div className={animate ? 'animation center fadeIn' : 'animation center'}>
             <h2>Loading...</h2>
             <MazeLoading stroke="#434244" strokeWidth="0.5" width="220" fill="none" className="animation draw" />
-            <p class="bottom">Please wait...</p>
+            <p className="bottom">Please wait...</p>
           </div>
         ) : null }
         </div>

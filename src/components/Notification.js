@@ -6,10 +6,20 @@ import Controls from './Controls';
 
 class Notification extends Component {
 
+  /*
+  **
+  ** Remove the maze ID from url to show start screen to play again.
+  **
+  */
   playAgain = () => {
     window.location.href = '?maze=';
   }
 
+  /*
+  **
+  ** Return the maze to save the pony after pressing square button.
+  **
+  */
   returnToMaze = () => {
     window.location.href = '?maze='+this.props.mazeID;
   }

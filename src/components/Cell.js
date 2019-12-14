@@ -1,3 +1,11 @@
+/**
+ * Save The Pony - Trustpilot Code Challenge
+ * https://github.com/umuthan/save-the-pony
+ *
+ * Author: Umuthan Uyan
+ *
+ */
+
 import React, { Component } from 'react';
 
 class Cell extends Component {
@@ -15,10 +23,20 @@ class Cell extends Component {
 
     var borderClass="cell";
 
+    /*
+    **
+    ** Define border class name from values that came from API
+    **
+    */
     borders.map(function (border) {
       return borderClass = borderClass+' '+border;
     })
 
+    /*
+    **
+    ** Setting cell width and height.
+    **
+    */
     var cellWidth = (100/mazeWidth)+'%';
     var cellHeight = (100/mazeHeight)+'%';
 

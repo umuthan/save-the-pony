@@ -1,3 +1,11 @@
+/**
+ * Save The Pony - Trustpilot Code Challenge
+ * https://github.com/umuthan/save-the-pony
+ *
+ * Author: Umuthan Uyan
+ *
+ */
+
 import React, { Component } from 'react';
 
 import { mazeInfo, movePony, apiURL } from '../api/Maze';
@@ -7,6 +15,11 @@ import Cell from './Cell';
 
 class Maze extends Component {
 
+  /*
+  **
+  ** Setting the default values for maze.
+  **
+  */
   state = {
     maze: null,
     pony: 0,
@@ -16,6 +29,11 @@ class Maze extends Component {
     mazeHeight: 0
   };
 
+  /*
+  **
+  ** Update pony direction.
+  **
+  */
   moveMyPony = (direction) => {
     var directionData = {};
     directionData['direction'] = direction;
@@ -25,6 +43,11 @@ class Maze extends Component {
     });
   }
 
+  /*
+  **
+  ** Update maze after pressing direction buttons.
+  **
+  */
   updateMaze = () => {
     mazeInfo(this.props.mazeID).then(data => {
       if(data['game-state']['state'].toLowerCase()==='active') {
@@ -46,6 +69,11 @@ class Maze extends Component {
     })
   }
 
+  /*
+  **
+  ** Quit maze when pressing square button.
+  **
+  */
   quitMaze = () => {
     this.props.notificationUpdateCallback(
       "Pony not be saved!\n Are you sure?",
@@ -54,6 +82,11 @@ class Maze extends Component {
     )
   }
 
+  /*
+  **
+  ** Update maze after createMaze function.
+  **
+  */
   componentDidMount() {
     this.updateMaze();
   }
